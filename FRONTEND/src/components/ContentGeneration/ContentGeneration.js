@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getUserProfileAPI } from "../../apis/user/usersAPI";
 import StatusMessage from "../Alert/StatusMessage";
-import { generateContentAPI } from "../../apis/chatGPT/chatGPT";
+import { generateContentAPI } from "../../apis/googleAI/googleAI";
 
 const BlogPostAIAssistant = () => {
   const [generatedContent, setGeneratedContent] = useState("");

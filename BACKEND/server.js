@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const usersRouter = require("./routes/usersRouter");
 const { errorHandler } = require("./middlewares/errorMiddleware");
-const openAIRouter = require("./routes/openAIRouter");
+const googleAIRouter = require("./routes/googleAIRouter");
 const stripeRouter = require("./routes/stripeRouter");
 const User = require("./models/User");
 require("./utils/connectDB")();
@@ -13,7 +13,7 @@ require("./utils/connectDB")();
 const app = express();
 const PORT = process.env.PORT || 8090;
 
-//Cron for the trial period : run every single
+//Cron for the trial period : run every single second
 cron.schedule("0 0 * * * *", async () => {
   console.log("This task runs every second");
   try {
@@ -92,7 +92,6 @@ cron.schedule("0 0 1 * * *", async () => {
     console.log(error);
   }
 });
-//Cron paid plan
 
 //----middlewares----
 app.use(express.json()); //pass incoming json data
@@ -104,7 +103,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 //----Routes-----
 app.use("/api/v1/users", usersRouter);
-app.use("/api/v1/openai", openAIRouter);
+app.use("/api/v1/googleai", googleAIRouter);
 app.use("/api/v1/stripe", stripeRouter);
 
 //---Error handler middleware----

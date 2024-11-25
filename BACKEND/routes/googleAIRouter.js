@@ -1,16 +1,16 @@
 const express = require("express");
 
 const isAuthenticated = require("../middlewares/isAuthenticated");
-const { openAIController } = require("../controllers/openAIController");
+const { googleAIController } = require("../controllers/googleAIController");
 const checkApiRequestLimit = require("../middlewares/checkApiRequestLimit");
 
-const openAIRouter = express.Router();
+const googleAIRouter = express.Router();
 
-openAIRouter.post(
+googleAIRouter.post(
   "/generate-content",
   isAuthenticated,
   checkApiRequestLimit,
-  openAIController
+  googleAIController
 );
 
-module.exports = openAIRouter;
+module.exports = googleAIRouter;

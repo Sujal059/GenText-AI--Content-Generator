@@ -1,34 +1,26 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const ContentHistory = require("../models/ContentHistory");
 const User = require("../models/User");
 
-//----OpenAI Controller----
+//----googleAI Controller----
 
-const 
-openAIController = asyncHandler(async (req, res) => {
+const googleAIController = asyncHandler(async (req, res) => {
   const { prompt } = req.body;
-  console.log(prompt);
+  console.log("prompt:", prompt);
   try {
-    const response = await axios.post(
-      "https://api.openai.com/v1/completions",
-      {
-        model: "gpt-3.5-turbo-instruct",
-        prompt,
-        max_tokens: 600,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+
+    const result = await model.generateContent(prompt);
+    console.log("result:", result.response.text());
 
     //send the response
-
-    const content = response?.data?.choices[0].text?.trim();
-    console.log(content);
+    // const content = response?.data?.choices[0].text?.trim();
+    const content = result.response.text();
+    console.log("content:",content);
     //Create the history
     const newContent = await ContentHistory.create({
       user: req?.user?._id,
@@ -47,5 +39,5 @@ openAIController = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  openAIController,
+  googleAIController,
 };

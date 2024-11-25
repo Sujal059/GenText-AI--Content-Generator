@@ -10,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./AuthContext/AuthContext";
 //Stripe configuration
 const stripePromise = loadStripe(
-  "pk_test_51LVGZED8n0ExDwA4ocq21Al6QdhH7mgu9wk26r0mOCAB1n4dYb8CwepGCH6BvQvggiyLogZjxQsSHNHrxPUoaha200iDWOiYVW"
+  "pk_test_51NquRWSFs7hNrzkeFjcQanSxf7hCeYd8XQErhFOeEPSu3WwEbVbVGIrit2qQf3pOp5KyFfdz1jyGuAg0OnC9xNk700uMTsAM67"
 );
 
 const options = {

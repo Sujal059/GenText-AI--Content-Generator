@@ -14,9 +14,11 @@ const handlestripePayment = asyncHandler(async (req, res) => {
   const { amount, subscriptionPlan } = req.body;
   //get the user
   const user = req?.user;
-  console.log(user);
+  console.log("user:", user);
   try {
     //Create payment intent
+    console.log("payment started");
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Number(amount) * 100,
       currency: "usd",
@@ -26,7 +28,20 @@ const handlestripePayment = asyncHandler(async (req, res) => {
         userEmail: user?.email,
         subscriptionPlan,
       },
+      description: "subscription payment",
+      shipping: {
+        name: user?.username,
+        address: {      //sample address
+          line1: "510 Townsend St",
+          postal_code: "98140",
+          city: "San Francisco",
+          state: "CA",
+          country: "US",
+        },
+      },
     });
+
+    console.log("payment started 2", paymentIntent);
     //send the response
     res.json({
       clientSecret: paymentIntent?.client_secret,
@@ -45,8 +60,9 @@ const verifyPayment = asyncHandler(async (req, res) => {
   const { paymentId } = req.params;
   try {
     const paymentIntent = await stripe.paymentIntents.retrieve(paymentId);
-    console.log(paymentIntent);
+
     if (paymentIntent.status === "succeeded") {
+      console.log("payment:", paymentIntent);
       //get the info metada
       const metadata = paymentIntent?.metadata;
       const subscriptionPlan = metadata?.subscriptionPlan;
