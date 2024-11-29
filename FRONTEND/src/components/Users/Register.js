@@ -90,7 +90,7 @@ const Registration = () => {
               id="username"
               {...formik.getFieldProps("username")}
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-indigo-500"
-              placeholder="John Doe"
+              placeholder="Your Name"
             />
             {formik.touched.username && formik.errors.username && (
               <div className="text-red-500 mt-1">{formik.errors.username}</div>
