@@ -99,7 +99,7 @@ app.use(cookieParser()); //pass the cookie automatically
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "https://gen-text-ai-content-generator.vercel.app",
+    "http://gen-text-ai-content-generator.vercel.app"
   ],
   credentials: true,
 };

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const registerAPI = async (userData) => {
   const response = await axios.post(
-    //"http://localhost:8090/api/v1/users/register",
+    // "http://localhost:8090/api/v1/users/register",
     "https://gentext-ai-content-generator.onrender.com/api/v1/users/register",
     {
       email: userData?.email,
@@ -57,7 +57,7 @@ export const logoutAPI = async () => {
   );
   return response?.data;
 };
-//=======Logout =====
+//=======userProfile =====
 
 export const getUserProfileAPI = async () => {
   const response = await axios.get(

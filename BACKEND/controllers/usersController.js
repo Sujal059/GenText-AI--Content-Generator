@@ -46,6 +46,8 @@ const register = asyncHandler(async (req, res) => {
 //------Login---------
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  console.log("login requesyt recieved");
+  
   //check for user email
   const user = await User.findOne({ email });
   if (!user) {
@@ -68,7 +70,7 @@ const login = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
-    maxAge: 24 * 60 * 60 * 1000, //1 day
+    // maxAge: 24 * 60 * 60 * 1000, //1 day
   });
 
   //send the response
