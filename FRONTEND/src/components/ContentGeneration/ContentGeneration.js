@@ -10,7 +10,7 @@ import { generateContentAPI } from "../../apis/googleAI/googleAI";
 const BlogPostAIAssistant = () => {
   const [generatedContent, setGeneratedContent] = useState("");
   //get the user profile
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, data, error } = useQuery({
     queryFn: getUserProfileAPI,
     queryKey: ["profile"],
   });

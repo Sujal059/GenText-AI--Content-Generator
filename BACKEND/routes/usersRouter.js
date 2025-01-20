@@ -7,7 +7,6 @@ const {
   checkAuth,
 } = require("../controllers/usersController");
 const isAuthenticated = require("../middlewares/isAuthenticated");
-const { verifyPayment } = require("../controllers/handleStripePayment");
 
 const usersRouter = express.Router();
 

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   });
   //update the authenticated user
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && typeof data == "boolean") {
       setIsAuthenticated(data);
     }
   }, [data, isSuccess]);

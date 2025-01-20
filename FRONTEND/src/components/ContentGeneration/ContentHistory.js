@@ -54,10 +54,10 @@ const ContentGenerationHistory = () => {
                       </p>
                     </div>
                     <div className="flex items-center space-x-4">
-                      {/* Icons for view, edit, and delete actions - functionality to be implemented */}
-                      {/* <FaEye className="text-green-500 hover:text-green-600 cursor-pointer" />
+                      {/* Icons for view, edit, and delete actions */}
+                      <FaEye className="text-green-500 hover:text-green-600 cursor-pointer" />
               <FaRegEdit className="text-blue-500 hover:text-blue-600 cursor-pointer" />
-              <FaTrashAlt className="text-red-500 hover:text-red-600 cursor-pointer" /> */}
+              <FaTrashAlt className="text-red-500 hover:text-red-600 cursor-pointer" />
                     </div>
                   </li>
                 );

@@ -8,7 +8,7 @@ const dbConnect = async ()=>{
         console.log("db connect successfully");
     } catch (error) {
         console.log(error.message);
-        process.exit(1);   //use to exit the server
+        process.exit(1);   //exit the server
     }
 };
 

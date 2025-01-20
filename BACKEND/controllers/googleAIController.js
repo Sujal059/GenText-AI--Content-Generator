@@ -15,10 +15,9 @@ const googleAIController = asyncHandler(async (req, res) => {
 
 
     const result = await model.generateContent(prompt);
-    console.log("result:", result.response.text());
+    // console.log("result:", result.response.text());
 
     //send the response
-    // const content = response?.data?.choices[0].text?.trim();
     const content = result.response.text();
     console.log("content:",content);
     //Create the history
